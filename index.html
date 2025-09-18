@@ -90,11 +90,13 @@
         </tr>
 
     </table>
-     <a href="accessexample.html">Access Example</a>
-     <a href="moreexamples.html">JavaPackageBasicDemo</a>
-    <pre>
-        <img src="another.jpg" alt="NBK Logo" style="width:400px;height:300px;">
-/**
+    <a href="accessexample.html">Access Example</a><br>
+    <a href="moreexamples.html">Basic Examples</a><br>
+    <a href="findpath.html">Finding Package Classes and Classpath</a><br>
+    <a href="jars.html">JARS</a><br>
+    <img src="another.jpg" alt="NBK Logo" style="width:400px;height:300px;">
+ <pre>
+        /**
 1. What is a Package in Java?
 
 2. Why Use Packages?
@@ -259,6 +261,7 @@ Create another file in a different package `com/example/app/MainApp.java`:
 package com.example.app;
 
 // Importing the Greeter class from com.example.greetings
+<div style="border:1px solid rebeccapurple ;">
 import com.example.greetings.Greeter;
 
 public class MainApp {
@@ -267,6 +270,8 @@ public class MainApp {
         greeter.sayHello();
     }
 }
+</div>
+<div style="border:1px solid rebeccapurple ;background-color: cornflowerblue;">
 Step 3: Compiling and Running
 
 To compile and run this example, follow these steps:
@@ -285,9 +290,7 @@ java com.example.app.MainApp
 Output:
 
 Hello from the Greeter class!
-11. Use of `package-info.java`
-Java allows the creation of a `package-info.java` file to provide package-level documentation and annotations.
-
+</div>
 Example:
 
 /**
@@ -333,13 +336,11 @@ public class Main {
 
 }</pre>   
 
-Formore <Details>
+For more information, you can refer to the official documentation:
     <a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Object.html">Java Packages Documentation</a>
-</Details>
+
 </body>
 
 
 
-
 </html>
-
