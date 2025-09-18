@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6;color: #333;">
+    <pre>
+Package Access Example
+    Accessing a class in another package
+    Accessing the members of the class  
+    Accessing the private members of the class
+    Accessing the default members of the class
+    Accessing the protected members of the class
+------------------------------------
+package org.edu.nbkrist.cse.protect;
+
+public class Protection {   
+    int n = 1;
+    
+    private int n_pri = 2;
+    
+    protected int n_pro = 3;
+    
+    public int n_pub = 4;
+    
+    public Protection() {
+        System.out.println("base constructor");
+        System.out.println("n = " + n);
+        System.out.println("n_pri = " + n_pri);
+        System.out.println("n_pro = " + n_pro);
+        System.out.println("n_pub = " + n_pub);
+    }
+    
+}
+------------------------------------
+package org.edu.nbkrist.cse.protect;
+
+public class Derived extends Protection {
+    public Derived() {
+        System.out.println("derived constructor");
+        System.out.println("n = " + n);
+        // System.out.println("n_pri = " + n_pri); // private member, not accessible
+        System.out.println("n_pro = " + n_pro);
+        System.out.println("n_pub = " + n_pub);
+    }
+    
+    public static void main(String[] args) {
+        Derived derived = new Derived();
+    }
+    
+}
+------------------------------------
+
+package org.edu.nbkrist.cse.protect;
+/**
+ * SamePackage class, not sub class, not sub-sub class.
+ * Can access only public and default members of Protection class.
+ * 
+ */
+public class SamePackage {
+    public SamePackage() {
+        Protection p = new Protection();
+        System.out.println("n = " + p.n);
+        // System.out.println("n_pri = " + p.n_pri); // private member, not accessible
+         System.out.println("n_pro = " + p.n_pro); // protected member, not accessible
+         System.out.println("n_pub = " + p.n_pub);
+        
+
+    }
+    
+  
+    
+}
+------------------------------------
+This is in another package,
+since this subclass,can access protected members of Protection class
+and public members.
+
+-------------------------------------
+
+package org.edu.nbkrist.cse.protect2;
+
+import org.edu.nbkrist.cse.protect.*;
+
+public class Protection2 extends Protection   {
+    public Protection2() {
+        System.out.println("Protection2 constructor");
+    //class or package only
+        //System.out.println("n = " + n); // default member, not accessible
+        //System.out.println("n_pri = " + n_pri); // private member, not accessible
+        System.out.println("n_pro = " + n_pro); // protected member, accessible as this is subclass
+        System.out.println("n_pub = " + n_pub); // public member, accessible    
+    }
+   
+}
+------------------------------------
+package org.edu.nbkrist.cse.protect2;
+
+import org.edu.nbkrist.cse.protect.*;
+
+/**
+ * This class is in a different package.
+ * therefore only public members of Protection class are accessible here.   
+ * @author NBKrist
+ * 
+ */
+public class OtherPackage {
+    
+    public OtherPackage() {
+        System.out.println("OtherPackage constructor");
+        //class or package only
+        Protection p = new Protection();
+        //class or package only
+        //System.out.println("n = " + p.n); // default member, not accessible
+       //class only
+       //System.out.println("n_pri = " + p.n_pri); // private member, not accessible
+        //klass,subclass or same package
+        //System.out.println("n_pro = " + p.n_pro); // protected member, not accessible
+        System.out.println("n_pub = " + p.n_pub); // public member, accessible    
+    }
+}
+------------------------------------
+This Tester class for all the above classes
+------------------------------------
+
+package org.edu.nbkrist.cse.main;
+import org.edu.nbkrist.cse.protect.Derived;
+import org.edu.nbkrist.cse.protect.Protection;
+import org.edu.nbkrist.cse.protect.SamePackage;
+
+public class ProtectionTest {
+    public static void main(String[] args) {
+        System.out.println("Testing Protection class");
+        Protection p = new Protection();
+        Derived d = new Derived();
+        SamePackage sp = new SamePackage();
+        // org.edu.nbkrist.cse.protect2.Pr op = new
+        // org.edu.nbkrist.cse.protect2.OtherPackage();
+        org.edu.nbkrist.cse.protect2.Protection2 p2 = new org.edu.nbkrist.cse.protect2.Protection2();
+        org.edu.nbkrist.cse.protect2.OtherPackage op = new org.edu.nbkrist.cse.protect2.OtherPackage();
+    }
+}
+
+    </pre>
+</body>
+</html>
