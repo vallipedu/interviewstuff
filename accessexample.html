@@ -21,38 +21,29 @@ visibility for class members:
 The three access modifiers, private, public, and protected, provide a
 variety of ways to produce the many levels of access required by these
 categories.
+ Point to remember:       
+Java's access control mechanism, while seemingly complex, can be simplified into four main types: public, private, default (package-private), and protected.
 
-While	Java’s	access	control	mechanism	may	seem	complicated,	we	can
-simplify	it	as	follows.	Anything	declared	public	can	be	accessed	from	different
-classes	and	different	packages.
-Anything	declared	private	cannot	be	seen
-outside	of	its	class.	
-        When	a	member	does	not	have	an	explicit	access
-specification,	it	is	visible	to	subclasses	as	well	as	to	other	classes	in	the	same
-package.	This	is	the	default	access.	
-        If	you	want	to	allow	an	element	to	be	seen
-outside	your	current	package,	but	only	to	classes	that	subclass	your	class
-directly,	then	declare	that	element	protected.
+Public: A member declared as public is the most accessible. 
+        It can be accessed from any class, regardless of whether that class is in the same package or a different one.
 
+Private: A member declared as private is the most restrictive. 
+        It can only be accessed from within the class in which it's declared.
 
- The	following	example	shows	all	combinations	of	the	access	control	modifiers.
-This	example	has	two	packages	and	five	classes.	Remember	that	the	classes	for
-the	two	different	packages	need	to	be	stored	in	directories	named	after	their
-respective	packages—in	this	case,	p1	and	p2.
-The	source	for	the	first	package	defines	three	classes:	Protection,	Derived,
-and	SamePackage.	The	first	class	defines	four	int	variables	in	each	of	the	legal
-protection	modes.	The	variable	n	is	declared	with	the	default	protection,	n_pri
-is	private,	n_pro	is	protected,	and	n_pub	is	public.
-        Each	subsequent	class	in	this	example	will	try	to	access	the	variables	in	an
-instance	of	this	class.	The	lines	that	will	not	compile	due	to	access	restrictions.
-        instance	of	this	class.	The	lines	that	will	not	compile	due	to	access	restrictions
-are	commented	out.	Before	each	of	these	lines	is	a	comment	listing	the	places
-from	which	this	level	of	protection	would	allow	access.
-The	second	class,	Derived,	is	a	subclass	of	Protection	in	the	same	package,
-p1.	This	grants	Derived	access	to	every	variable	in	Protection	except	for
-n_pri,	the	private	one.	The	third	class,	SamePackage,	is	not	a	subclass	of
-Protection,	but	is	in	the	same	package	and	also	has	access	to	all	but	n_pri.
+Default (Package-Private): When a member has no explicit access specifier,
+        it has default access. This means it's accessible to all other classes within the same package. 
+        Subclasses in a different package cannot access it.
 
+Protected: A protected member is a bit of a hybrid. It's accessible to any class within the same package,
+        similar to default access. Additionally, it's accessible to subclasses,
+        even if those subclasses are in a different package.
+
+Summary of Java Access Modifiers
+The choice of access modifier is crucial for encapsulation, a fundamental principle of object-oriented programming. 
+        Encapsulation is the practice of bundling data (variables) and the methods that operate on that 
+        data into a single unit (a class). By controlling access to a class's members,
+        you can protect the integrity of the data and prevent unintended modification.
+---------------------------------------------------------------------------------------------------
         This	is	file	Protection.java:
 ------------------------------------
 package org.edu.nbkrist.cse.protect;
@@ -185,4 +176,5 @@ public class ProtectionTest {
     </pre>
 </body>
 </html>
+
 
